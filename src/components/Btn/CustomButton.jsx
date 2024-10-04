@@ -4,7 +4,7 @@ import { FiArrowUpRight } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
 
 const CustomButton = ({border, backgroundColor, color, hcolor, hbackgroundColor, name, width,
-    sfontSize,fontSize, p, sp, display,arrow, bb, br, pb, path
+    sfontSize,fontSize, p, sp, display,arrow, bb, br, pb, path,
 }) => {
     const navigate = useNavigate();
     const theme = useTheme();
@@ -14,7 +14,7 @@ const CustomButton = ({border, backgroundColor, color, hcolor, hbackgroundColor,
 
     return (
         <>
-            <MuiButton 
+            <MuiButton
             onClick={()=>navigate(path)}
             sx={{
                 width:`${width}`,
@@ -23,13 +23,13 @@ const CustomButton = ({border, backgroundColor, color, hcolor, hbackgroundColor,
                 padding: isSmallScreen ? `${sp || '0.3rem 1rem'}` : `${p || '0.5rem 2rem'}`,
                 paddingBottom:`${pb}`,
 
-            
+
                 borderRadius:`${br || '50px'}`,
                 display: 'flex',
-                alignItems: 'center', 
+                alignItems: 'center',
                 border: `${border}`,
                 borderBottom:`${bb}`,
-                
+
                 '&:hover':{
                     backgroundColor: `${hbackgroundColor}`,
                  color:'white'

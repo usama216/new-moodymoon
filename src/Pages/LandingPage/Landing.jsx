@@ -13,6 +13,8 @@ import Student_testimonials from "./student_testimonials/Student_testimonials";
 import Category from "./TextCard/Category";
 import ProductCard from "./TextCard/ProductCard";
 import ValidationForm from "./ValidationForm/ValidationForm";
+import ClientTestimonials from "./ClientTestimonials/ClientTestimonials";
+import HomeBlogsMain from "./HomeBlogs/HomeBlogsMain";
 
 const Landing = () => {
   const theme = useTheme();
@@ -31,11 +33,9 @@ const Landing = () => {
     <>
       <Page title="Khatri Brothers Academy">
         <Hero/>
-        <Hero_card/>
-        <Student_testimonials/>
-        <Category/>
-        <ProductCard/>
-        <ValidationForm/>
+
+        <HomeBlogsMain/>
+      <ClientTestimonials/>
       </Page>
     </>
   );
