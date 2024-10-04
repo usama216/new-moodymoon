@@ -14,6 +14,8 @@ import Category from "./TextCard/Category";
 import ProductCard from "./TextCard/ProductCard";
 import ValidationForm from "./ValidationForm/ValidationForm";
 import HeroCard from "./HeroCard/HeroCard";
+import ClientTestimonials from "./ClientTestimonials/ClientTestimonials";
+import HomeBlogsMain from "./HomeBlogs/HomeBlogsMain";
 
 const Landing = () => {
   const theme = useTheme();
@@ -33,11 +35,10 @@ const Landing = () => {
       <Page title="Moody Mood Hemp">
       <Hero/>
       <HeroCard/>
-        {/* <Hero_card/> */}
-        {/* <Student_testimonials/> */}
-        {/* <Category/> */}
-        {/* <ProductCard/> */}
-        {/* <ValidationForm/> */}
+
+
+        <HomeBlogsMain/>
+      <ClientTestimonials/>
       </Page>
     </>
   );

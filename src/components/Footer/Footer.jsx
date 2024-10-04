@@ -25,9 +25,9 @@ import { FaMapLocationDot } from "react-icons/fa6";
 
 
 const StyledFooter = styled(Box)(({ theme }) => ({
-  background: "#265630",
+  background: "#0e0e0e",
   color: "white",
-  padding: "2rem 5%",
+  padding: "2rem 15%",
   position:'relative',
   overflow:'hidden'
 }));
@@ -65,7 +65,8 @@ const Footer = () => {
       display: "none",
     },
 
-    borderRadius: "45px",
+    borderRadius: "15px",
+    padding:'0.2rem',
     backgroundColor: "white",
   };
 
@@ -89,24 +90,35 @@ const Footer = () => {
     },
     {title: "THCA Disclaimer",
       mb:'1rem',
-      des1:'We do not ship THCa products to the states where THCa is restricted or illegal.', 
+      des1:'We do not ship THCa products to the states where THCa is restricted or illegal.',
       des2:'We CAN ship THCa products to the following states: Alabama, Arizona, Arkansas, D.C., Florida, Georgia, Illinois, Kentucky, Louisiana, Maine, Missouri, Nebraska, Nevada, New York, North Carolina, Ohio, Pennsylvania, South Carolina, Tennessee, Texas, West Virginia.'
     },
     {title: "Delta-8 Disclaimer",
       mb:'0rem',
-      des1:'', 
+      des1:'',
       des2:'We do not ship Delta 8 products to the following states: Alaska, Colorado, Delaware, Hawaii, Idaho, Massachusetts, Mississippi, Montana, Nevada, New York, North Dakota, Oregon, Rhode Island, Utah, Vermont, Virginia, Washington, and West Virginia.'
     }
-  
+
   ]
 
   return (
     <StyledFooter>
-       <img src="/footerbg.png" alt="" style={{
+     <Box sx={{display:'flex'}}>
+     <Box>
+     <img src="/footerright.png" alt="" style={{
         position:'absolute',
-        right:0, 
+        right:0,
+        top:0,
         bottom:0
-      }}/> 
+      }}/>
+     </Box>
+
+       <img src="/footerleft.png" alt="" style={{
+        position:'absolute',
+        left:0,
+        bottom:0
+      }}/>
+     </Box>
       <Grid container spacing={5} sx={{paddingTop:isSmallScreen ?  "1rem": '3rem'}}>
         <Grid item lg={3} sm={6} xs={12}>
           <FlexBox sx={{ gap: "1rem" }}>
@@ -172,20 +184,20 @@ const Footer = () => {
 
         <Grid item lg={3} sm={6} xs={12}>
           <Typography sx={{ fontSize: isSmallScreen ? "1.2rem": "1.4rem",
-             fontWeight: 700 }}>          
+             fontWeight: 700 }}>
             Contact Info
           </Typography>
           <Typography sx={{ mt: 3,
              fontSize: isSmallScreen ? "0.9rem": "1.1rem",
               mb: 2, }}>
-          <TfiHeadphoneAlt style={{marginRight:'0.5rem', 
+          <TfiHeadphoneAlt style={{marginRight:'0.5rem',
           fontSize: isSmallScreen ? "1.2rem": "1.5rem",
            color:'#51a2dc',
             marginBottom:'0rem'          }}/>
             +92-300-0000000
           </Typography>
           <Typography sx={{ fontSize: isSmallScreen ? "0.9rem": "1.1rem", mb: 2 }}>
-          <MdEmail style={{marginRight:'0.5rem', 
+          <MdEmail style={{marginRight:'0.5rem',
             fontSize: isSmallScreen ? "1.4rem": "1.8rem",
              color:'#51a2dc',   marginBottom:'-3px'}}/>
             moodymoonhemp@gmail.com
@@ -194,17 +206,17 @@ const Footer = () => {
             display:'flex', alignItems:'start'
           }}>
           <FaMapLocationDot style={{marginRight:'0.5rem',
-            fontSize: isSmallScreen ? "1.4rem": "2.2rem",
+            fontSize: isSmallScreen ? "1.4rem": "2rem",
               color:'#51a2dc',   marginBottom:'-3px'}}/>
           <Typography sx={{ fontSize: isSmallScreen ? "0.9rem": "1.1rem", mb: 2 }}>
             102 Smith Sawyer, Cave Junction - OR 97523
           </Typography>
           </Box>
-         
+
         </Grid>
       </Grid>
 
-      
+
       <Divider sx={{ backgroundColor: "gray", height:'0.01px' ,
       margin:isSmallScreen ? "2rem 0rem": '4rem 0rem'
       }} />
@@ -214,7 +226,7 @@ const Footer = () => {
           justifyContent: "center",
           color: "white",
           flexDirection: "column",
-          
+
         }}
       >
         <Typography
@@ -244,20 +256,23 @@ const Footer = () => {
             // size="small"
             sx={textFieldStyle}
             fullWidth
+            size="small"
             placeholder="Input your email address here"
           />
           <CustomButton
             name="View All"
+            br='15px'
             border={"1px solid #51a2dc"}
             backgroundColor={"#51a2dc"}
             color={"white"}
             hbackgroundColor={"transparent"}
             hcolor={"#51a2dc"}
             width={"14rem"}
+        
           />
         </Box>
       </FlexBox>
-      
+
       <Divider sx={{ backgroundColor: "gray", height:'0.01px',
          margin:isSmallScreen ? "2rem 0rem": '3rem 0rem'
        }} />
@@ -287,7 +302,7 @@ const Footer = () => {
                 </Typography>
           </Box>
         ))}
-        
+
       </Box>
 
       <Divider sx={{ backgroundColor: "gray", height:'0.01px',
@@ -306,24 +321,26 @@ const Footer = () => {
         </Typography>
 
         <Box
-          sx={{ dispaly: "flex", alignItems: "center", justifyContent: "end" }}
+          sx={{ dispaly: "flex"}}
         >
-          <Image
+         <Box sx={{display:'flex'}}>
+         <Image
             src="/footercard1.svg"
-            width="13%"
-            sx={{ marginRight: "1rem" }}
+            width="15%"
+            sx={{ marginRight: "0.5rem" }}
           />
           <Image
             src="/footercard2.svg"
-            width="13%"
-            sx={{ marginRight: "1rem" }}
+            width="15%"
+            sx={{ marginRight: "0.5rem" }}
           />
           <Image
             src="/footercard3.svg"
-            width="13%"
-            sx={{ marginRight: "1rem" }}
+            width="15%"
+            sx={{ marginRight: "0.5rem" }}
           />
-          <Image src="/footercard4.svg" width="13%" />
+          <Image src="/footercard4.svg" width="15%" />
+         </Box>
         </Box>
       </Box>
     </StyledFooter>

@@ -1,0 +1,277 @@
+import React from "react";
+import Slider from "react-slick";
+import {
+  Grid,
+  Card,
+  CardContent,
+  Avatar,
+  Typography,
+  IconButton,
+  Box,
+  useMediaQuery,
+  useTheme,
+  Divider,
+  Button,
+} from "@mui/material";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Image from "../../../components/Image/Image";
+import CustomButton from "../../../components/Btn/CustomButton";
+
+const HomeBlogsMain = () => {
+
+  const blogsdata = [
+    {
+      name: "Sara T.",
+      image: "/username.png",
+     title:'Shyamal Patel',
+     date:'May 19',
+
+     heading:'How to Choose High-Quality CBD Products: What to Look For',
+        des:'With the growing popularity of CBD, the market is flooded with products, making it essential to know how to identify high-quality options. Here are key factors to consider:'
+    },
+    {
+      name: "Vicky P.",
+      image: "/username.png",
+      date:'May 19',
+
+      title:'Shyamal Patel',
+        heading:'How to Choose High-Quality CBD Products: What to Look For',
+        des:'With the growing popularity of CBD, the market is flooded with products, making it essential to know how to identify high-quality options. Here are key factors to consider:'
+
+    },
+    {
+      name: "John D.",
+      image: "/username.png",
+      title:'Shyamal Patel',
+      date:'May 19',
+        heading:'How to Choose High-Quality CBD Products: What to Look For',
+        des:'With the growing popularity of CBD, the market is flooded with products, making it essential to know how to identify high-quality options. Here are key factors to consider:',
+    },
+  ];
+
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMediumScreen = useMediaQuery(
+    theme.breakpoints.up("sm") && theme.breakpoints.down("md")
+  );
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: isSmallScreen ? 1 : isMediumScreen ? 2 : 3,
+    slidesToScroll: 1,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
+  };
+
+  const sliderRef = React.useRef(null);
+
+  const handleNext = () => {
+    sliderRef.current.slickNext();
+  };
+
+  const handlePrev = () => {
+    sliderRef.current.slickPrev();
+  };
+
+  return (
+    <Box
+      justifyContent="center"
+      alignItems="center"
+      style={{
+        overflowX: "hidden",
+        position: "relative",
+        padding: "2rem 15%",
+        backgroundColor: "black",
+      }}
+    >
+      <Box sx={{ textAlign: "center", marginBottom: "20px" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            variant="h4"
+            component="h2"
+            sx={{ color: "white", fontWeight: 600 }}
+          >
+            Latest News & Blogs
+          </Typography>
+          <Box sx={{ display: "flex" }} gap={2}>
+            <IconButton
+              onClick={handlePrev}
+              style={{
+                transform: "translateY(-50%)",
+                zIndex: 1,
+                backgroundColor: "#1f1f1f",
+                color: "#fff",
+              }}
+            >
+              <ArrowBackIosIcon />
+            </IconButton>
+
+            <IconButton
+              onClick={handleNext}
+              style={{
+                transform: "translateY(-50%)",
+                zIndex: 1,
+                backgroundColor: "#1f1f1f",
+                color: "#fff",
+              }}
+            >
+              <ArrowForwardIosIcon />
+            </IconButton>
+          </Box>
+        </Box>
+      </Box>
+
+      <Box>
+        <Slider {...settings} ref={sliderRef}>
+          {blogsdata.map((row, index) => (
+            <Box key={index} sx={{ padding: "0 10px" }}>
+              <Card
+                style={{
+                  backgroundColor: "black",
+                  color: "white",
+                  borderRadius: "10px",
+                  width: "100%",
+                //   borderColor: "white",
+                //   border: "1px solid #343434",
+                  padding: "1rem",
+                }}
+              >
+                <Box>
+                <Image src="/testimonialsYellow.png" width="80%" />
+
+                  <Box>
+<br/>
+<br/>
+
+                  <Typography
+                    sx={{
+                      color: "white",
+                      fontSize: isSmallScreen
+                        ? "1.2rem"
+                        : isMediumScreen
+                        ? "1.4rem"
+                        : "1.6rem",
+                      fontWeight: 600,
+                      textTransform: "capitalize",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    {row.heading}
+
+                  </Typography>
+<Box sx={{display:'flex'}} gap={3}>
+    <Box>
+
+    <Typography
+                    sx={{
+                      color: "white",
+                      fontSize: isSmallScreen
+                        ? "1rem"
+                        : isMediumScreen
+                        ? "1.1rem"
+                        : "1.1rem",
+
+                      textTransform: "capitalize",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    {row.title}
+                  </Typography>
+
+
+    </Box>
+<Box>
+
+<Typography
+                    sx={{
+                      color: "white",
+                      fontSize: isSmallScreen
+                        ? "1rem"
+                        : isMediumScreen
+                        ? "1.1rem"
+                        : "1.1rem",
+
+                      textTransform: "capitalize",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    {row.date}
+                  </Typography>
+
+
+</Box>
+</Box>
+                  <Typography
+                    sx={{
+                      color: "white",
+                      fontSize: isSmallScreen
+                        ? "0.9rem"
+                        : isMediumScreen
+                        ? "1rem"
+                        : "1rem",
+                      fontWeight: 400,
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    {row.des}
+                  </Typography>
+
+
+
+
+                  </Box>
+                </Box>
+              </Card>
+            </Box>
+          ))}
+        </Slider>
+      </Box>
+      <br/>
+<Box sx={{display:'flex', justifyContent:'center',}}>
+
+<CustomButton
+            name="View All"
+            br='15px'
+            border={"1px solid #51a2dc"}
+            backgroundColor={"#51a2dc"}
+            color={"white"}
+            hbackgroundColor={"transparent"}
+            hcolor={"#51a2dc"}
+            width={"14rem"}
+
+          />
+</Box>
+
+    </Box>
+  );
+};
+
+export default HomeBlogsMain;
