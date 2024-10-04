@@ -13,6 +13,7 @@ import Student_testimonials from "./student_testimonials/Student_testimonials";
 import Category from "./TextCard/Category";
 import ProductCard from "./TextCard/ProductCard";
 import ValidationForm from "./ValidationForm/ValidationForm";
+import HeroCard from "./HeroCard/HeroCard";
 
 const Landing = () => {
   const theme = useTheme();
@@ -29,13 +30,14 @@ const Landing = () => {
 
   return (
     <>
-      <Page title="Khatri Brothers Academy">
-        <Hero/>
-        <Hero_card/>
-        <Student_testimonials/>
-        <Category/>
-        <ProductCard/>
-        <ValidationForm/>
+      <Page title="Moody Mood Hemp">
+      <Hero/>
+      <HeroCard/>
+        {/* <Hero_card/> */}
+        {/* <Student_testimonials/> */}
+        {/* <Category/> */}
+        {/* <ProductCard/> */}
+        {/* <ValidationForm/> */}
       </Page>
     </>
   );

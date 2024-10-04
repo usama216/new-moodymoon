@@ -24,7 +24,7 @@ const TopHeader = () => {
       <Box
         sx={{
           display: isSmall ? "none" : "block",
-          backgroundColor: "#195630",
+          backgroundColor: "transprent",
           padding: "0.5rem 0",
           overflow: "hidden",
           whiteSpace: "nowrap",

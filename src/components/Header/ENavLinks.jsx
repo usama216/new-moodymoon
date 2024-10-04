@@ -20,7 +20,7 @@ const [subHeading, setSubHeading] = useState('');
         {navlinks.map((link, index) => (
           <div>
             <div key={index} className="  group ">
-            <h1 className="cursor-pointer hover:text-[#195630] group text-[0.9rem] md:text-[0.9rem] font-bold
+            <h1 className="cursor-pointer text-white hover:text-[#51a2db] group text-[0.9rem] md:text-[1rem] font-regular
             flex items-center justify-between md:justify-center pr-3 md:pr-0 "
             onClick={()=>heading !== link.name ? setHeading(link.name) : setHeading('')}
             > {link.name}
@@ -31,21 +31,21 @@ const [subHeading, setSubHeading] = useState('');
             </h1>
             {link.submenu && link.sublinks && (
               <div>
-                <div className="hidden group-hover:md:block hover:block  absolute top-14 transition-all duration-[2000ms]">
-                {/* <div className="">
+                <div className="hidden group-hover:md:block hover:block  absolute top-24 transition-all duration-[2000ms]">
+                <div className="">
                     <div
                       className="w-4 h-4 left-3 absolute 
-                    mt-1 bg-gray-300 rotate-45"
+                    -mt-1 bg-black rotate-45"
                     ></div>
-                  </div> */}
-                  <div className=" bg-white p-10  grid grid-cols-3 gap-10 " >
+                  </div>
+                  <div className=" bg-black p-10  grid grid-cols-3 gap-10 " >
                     {link.sublinks.map((mysublinks, index) => (
                       <div className="">
-                          <h1 key={index} className="text-[1rem] md:text-[1.1rem] font-semibold"> 
+                          <h1 key={index} className="text-white text-[1rem] md:text-[1.1rem] font-semibold"> 
                               {mysublinks.head}
                               </h1>
                           {mysublinks.sublink.map((slinks)=>(
-                              <li className="text-[0.9rem] md:text-[1rem] hover:text-blue-500">
+                              <li className="text-white text-[0.9rem] md:text-[1rem] hover:text-blue-500">
                                   <Link to={slinks.route}>{slinks.name}</Link>
                               </li>
                           ))}

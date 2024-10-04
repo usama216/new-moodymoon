@@ -1,41 +1,37 @@
-import { ThemeProvider, StyledEngineProvider } from '@mui/material';
-import { theme } from './Theme';
-import { SnackbarProvider } from 'notistack';
-import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
-import Router from './routes';
-import './App.css';
-import Footer from  '../src/components/Footer/Footer'
-import Header from './components/Header/Header';
-import { useLocation } from 'react-router-dom';
-
+import { ThemeProvider, StyledEngineProvider } from "@mui/material";
+import { theme } from "./Theme";
+import { SnackbarProvider } from "notistack";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import Router from "./routes";
+import "./App.css";
+import Footer from "../src/components/Footer/Footer";
+import Header from "./components/Header/Header";
+import { useLocation } from "react-router-dom";
+import TopHeader from "./components/Header/TopHeader";
 
 function App() {
   const location = useLocation();
-  const showHeaderAndFooter = location.pathname !== '/admin/dashboard' && location.pathname !== '/seller/dashboard';
+  const showHeaderAndFooter =
+    location.pathname !== "/admin/dashboard" &&
+    location.pathname !== "/seller/dashboard";
 
   return (
     <div>
-
       <ThemeProvider theme={theme}>
         <StyledEngineProvider injectFirst>
           <SnackbarProvider
             autoHideDuration={3000}
             anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right'
+              vertical: "bottom",
+              horizontal: "right",
             }}
           >
             <ErrorBoundary>
               {/* Conditionally render Header and Footer */}
+              <TopHeader/>
               <Header />
-              
-
-
               <Router />
-
-<Footer/>
-
-
+              <Footer />
             </ErrorBoundary>
           </SnackbarProvider>
         </StyledEngineProvider>

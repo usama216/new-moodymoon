@@ -26,12 +26,21 @@ import {
   studentApplyFreeTrails,
 } from "../../../store/actions/courseActions";
 import FreeTrialButton from "../../../components/FreeTrialButton";
+import Btn from "../../../components/Btn/Btn";
+import { GoArrowRight } from "react-icons/go";
+
 
 function Hero() {
+
+  const theme = useTheme();
+  const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const is1200 = useMediaQuery('(max-width:1200px)'); 
+
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const theme = useTheme();
   const auth = useSelector((state) => state?.auth?.isAuthenticated);
   const [trailData, setTrailData] = useState({});
   const [loadingEnroll, setLoadingEnroll] = useState(false);
@@ -163,155 +172,54 @@ function Hero() {
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <section className="hero-section">
-          <div className="hero-section-text">
+        <Box sx={{
+          backgroundImage:"url(/herobg.png)", 
+          backgroundSize:'cover',
+          backgroundPosition:'start',
+          height:isSmallScreen ? '70vh': isMediumScreen ? '80vh':'120vh',
+           mt:isSmallScreen ? '-5rem': isMediumScreen ? '-6rem':'-8.4rem',
+          boxSizing:'border-box',
+          boxShadow: 'inset -0px -20px 100px black'
+        }}>
+        <section style={{height:'100%', display:'flex',
+          justifyContent:'center', alignItems:'center',
+          boxSizing:'border-box',
+          padding:'0% 10%'
+
+        }}>
+          <div style={{display:'flex', flexDirection:'column',
+          justifyContent:'center', alignItems:'center'}}>
             <Typography
-              sx={{ color: "white", fontSize: "3rem", fontWeight: "500" }}
+              sx={{ color: "#faee1d", 
+                fontSize:isSmallScreen ? '1.5rem': isMediumScreen ? '2rem': "2.5rem",
+                 fontWeight: "400", mb:'-0.5rem' ,
+                 textAlign:'center',}}
             >
-              Music For <br /> Everyone
+             Finest Organic 
             </Typography>
 
-            <Typography sx={{ color: "white", fontSize: "1.2rem" }}>
-              Which course is suitable for you?
+            <Typography sx={{ color: "white",
+            textAlign:'center',
+               fontSize:isSmallScreen ? '2rem': isMediumScreen ? '3.2rem': "4rem", 
+               fontWeight: "700" }}>
+            Herbs in Every CBD Product
             </Typography>
-            <br />
+            <Typography sx={{ color: "white",
+               fontSize:isSmallScreen ? '1rem': isMediumScreen ? '1.1rem': "1.2rem",
+                mb:'1rem',textAlign:'center', }}>
+            Moody Moon has carefully crafted a variety of Hemp CBD products to choose from for daily wellness support.
+            </Typography>
+            <Btn sx={{fontSize:isSmallScreen ? '0.8rem': isMediumScreen ? '0.9rem':'0.9rem',
+               fontWeight:'400', p:'0.7rem 1rem', borderRadius:'10px'}}>
+            <span style={{color:'white', textTransform:'uppercase'}}>Learn More</span> 
+            <GoArrowRight style={{fontSize: isSmallScreen ?  '1.1rem':'1.2rem', color:'white', marginLeft:'0.5rem'}}/>
+            </Btn>
             <Box sx={{ width: isSmall ? "200%" : "50%" }}>
               {/* <FreeTrialButton/> */}
             </Box>
           </div>
         </section>
-
-        <Dialog open={openModal} onClose={handleCloseModal}>
-          <DialogTitle
-            sx={{ textAlign: "center", color: theme.palette.primary.main }}
-          >
-            Select Date and Time for 15 Minutes Free Trial Class with Admin
-          </DialogTitle>
-          <DialogContent>
-            <DatePicker
-              fullWidth
-              size="small"
-              value={selectedDate}
-              onChange={(newDate) => setSelectedDate(newDate)}
-              renderInput={(params) => (
-                <Box component="input" fullWidth {...params.inputProps} />
-              )}
-              shouldDisableDate={shouldDisableDate}
-            />
-
-            <Typography sx={{ marginTop: 2 }}>Select Time:</Typography>
-            <Select
-              size="small"
-              value={selectedTime}
-              onChange={(e) => setSelectedTime(e.target.value)}
-              displayEmpty
-              fullWidth
-              renderValue={(value) => (value ? value : "Select Time")}
-              sx={{ marginBottom: 2 }}
-              disabled={!selectedDate}
-            >
-              {futureTimes.length > 0 ? (
-                futureTimes.map((timeObj, index) => (
-                  <MenuItem
-                    key={index}
-                    value={dayjs(timeObj.time).format("h:mm A")}
-                  >
-                    {dayjs(timeObj.time).format("h:mm A")}
-                  </MenuItem>
-                ))
-              ) : (
-                <MenuItem disabled>No available times</MenuItem>
-              )}
-            </Select>
-            <Typography
-              sx={{ fontSize: "0.8rem", color: theme.palette.primary.main }}
-            >
-              Time as per your local time{" "}
-            </Typography>
-            <br />
-
-            <Typography>What Music Course you are interested in?</Typography>
-            <Select
-              value={selectedOption}
-              onChange={(e) => setSelectedOption(e.target.value)}
-              displayEmpty
-              size="small"
-              fullWidth
-              renderValue={(value) => (value ? value : "Select Course")}
-              sx={{ marginBottom: 2 }}
-            >
-              {[
-                "Hindustani Vocals",
-                "Bhajan",
-                "Tabla",
-                "Ghazal",
-                "Bollywood/Filmy Songs",
-              ].map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option}
-                </MenuItem>
-              ))}
-            </Select>
-
-            <Typography sx={{ marginTop: 2 }}>
-              Have you learned music somewhere else?
-            </Typography>
-            <Select
-              value={isSecondQuestionYes}
-              onChange={(e) => setIsSecondQuestionYes(e.target.value)}
-              displayEmpty
-              fullWidth
-              size="small"
-              renderValue={(value) =>
-                value !== null ? (value ? "Yes" : "No") : "Select an Option"
-              }
-              sx={{ marginBottom: 2 }}
-            >
-              <MenuItem value={true}>Yes</MenuItem>
-              <MenuItem value={false}>No</MenuItem>
-            </Select>
-
-            {isSecondQuestionYes === true && (
-              <>
-                <Typography sx={{ marginTop: 2 }}>
-                  For how many years have you been learning?
-                </Typography>
-                <Select
-                  size="small"
-                  value={selectedThirdOption}
-                  onChange={(e) => setSelectedThirdOption(e.target.value)}
-                  displayEmpty
-                  fullWidth
-                  renderValue={(value) => (value ? value : "Select Option")}
-                  sx={{ marginBottom: 2 }}
-                >
-                  {["1 year", "2 years", "3 years", "4 years", "5 years"].map(
-                    (option) => (
-                      <MenuItem key={option} value={option}>
-                        {option}
-                      </MenuItem>
-                    )
-                  )}
-                </Select>
-              </>
-            )}
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleCloseModal}>Cancel</Button>
-            <Button
-              variant="contained"
-              onClick={handleFreeTrail}
-              disabled={
-                !selectedDate ||
-                !selectedTime ||
-                !selectedOption ||
-                (isSecondQuestionYes === true && !selectedThirdOption)
-              }
-            >
-              Confirm
-            </Button>
-          </DialogActions>
-        </Dialog>
+        </Box>
       </LocalizationProvider>
     </>
   );

@@ -8,10 +8,10 @@ import {
   IconButton,
 
   Typography,
-  useTheme,
   TextField,
   InputAdornment,
   useMediaQuery,
+  useTheme,
   Badge
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -27,19 +27,25 @@ import { FaRegCircleUser } from "react-icons/fa6";
 import SearchIcon from '@mui/icons-material/Search';
 import { useSelector } from "react-redux";
 import ENavLinks from "./ENavLinks";
+import { BorderAllRounded } from "@mui/icons-material";
+
 
 
 
 
 const Header = () => {
   const cartitem = useSelector((state)=>state.cartItem)
+  const theme = useTheme();
+  const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const is1200 = useMediaQuery('(max-width:1200px)'); 
 
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const theme = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedValue, setSelectedValue] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
 
   const auth = true;
 
@@ -102,9 +108,14 @@ const handleCartOpen = ()=>{
   return (
    <>
    <Box sx={{
+  //  backgroundColor:'red',
+  padding: isSmallScreen ? "0.5rem 7%": "0.5rem 13%",
      width:'100%',
     boxSizing:'border-box',
      overflow:'hidden',
+     zIndex:'99',
+      position:'sticky'
+     
   }}>
     {/* white page for shipping cart  */}
     {/* <Box
@@ -126,18 +137,20 @@ const handleCartOpen = ()=>{
 
       <Box
         sx={{
-          padding: "0.5rem 5%",
+          backgroundColor:'#ffffff3e',
+          p:'0.4rem 1%',
           color: "black",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          borderRadius:'10px'
         }}
       >
-        <FlexBox sx={{ gap: "1rem" }}>
+        <FlexBox sx={{ gap: "1rem", }}>
           <Box onClick={handleHome} sx={{cursor:'pointer'}}>
 
-          <Image src="/loginlogo.svg" sx={{
-            width:'4rem'
+          <Image src="/logo.avif" sx={{
+            width:isSmallScreen ? '2.5rem':'4rem'
           }} />
           </Box>
 
@@ -146,7 +159,7 @@ const handleCartOpen = ()=>{
         <Box
           sx={{
             display: { xs: 'none',sm: "none", md: "flex" },
-            gap: is1200 ? 2 : 6,
+            gap: is1200 ? 2 : 5,
             alignItems: "center",
           }}
         >
@@ -154,10 +167,10 @@ const handleCartOpen = ()=>{
           navigate('/')
         )}
         sx={{
-          fontSize:  "0.9rem",
+          fontSize: isSmallScreen ? '0.9rem': "1rem",
           cursor: "pointer",
-          fontWeight:550,
-          color: "black",
+          fontWeight:400,
+          color: "white",
           ":hover": {
             color: theme.palette.primary.main,
           },
@@ -175,10 +188,10 @@ const handleCartOpen = ()=>{
                 setDrawerOpen(false);
               }}
               sx={{
-                fontSize:  "0.9rem",
+                fontSize: isSmallScreen ? '0.9rem': "1rem",
                 cursor: "pointer",
-                fontWeight:550,
-                color: "black",
+                fontWeight:400,
+                color: "white",
                 ":hover": {
                   color: theme.palette.primary.main,
                 },
@@ -190,54 +203,79 @@ const handleCartOpen = ()=>{
         </Box>
 
         <FlexBox sx={{ display: { xs: 'none',sm: "none", md: "flex", gap: "0.5rem" } }}>
-        <TextField
-        // size="small"
-        sx={{
-          borderRadius: '50px',
-          width:is1200 ? '100px': '200px', // Adjust width as needed
-          '& .MuiOutlinedInput-root': {
-            borderRadius: '50px',
-          },
-          '& .MuiInputBase-input': {
-            height: '7px', // Adjust height as needed
-            fontWeight: 500, // Font weight for the input text
-          },
-          '& .MuiInputLabel-root': {
-            color: 'black', // Placeholder color
-          },
-          '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: 'black', // Border color to match placeholder color if needed
-          },
-          '& .MuiInputBase-input::placeholder': {
-            color: 'black', // Placeholder text color
-          },
-        }}
-        variant="outlined"
-        placeholder="Search..."
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          ),
-        }}
-      />
+       
+    <TextField
+      onClick={()=> setIsClicked(true)}
+      onBlur={()=> setIsClicked(false)}
+      sx={{
+        borderRadius: '50px',
+        width: isClicked ? '100px' : '50px',
+        transition: 'width 0.3s ease', // Smooth transition for width change
+        '&:hover .MuiOutlinedInput-notchedOutline': {
+          borderColor:theme.palette.primary.main // Keep the border color white on hover
+        },
+        '&:hover': {
+          color: 'inherit', // Prevent color change on hover
+        },
+        '& .MuiOutlinedInput-root': {
+          borderRadius: '10px',
+        },
+        '& .MuiInputBase-input': {
+          height: '8px', // Adjust height as needed
+          fontWeight: 400, // Font weight for the input text
+          color:'white',
+          fontSize:'0.9rem'
+          
+        },
+        '& .MuiInputLabel-root': {
+          color: 'white', // Placeholder color
+        },
+        '& .MuiOutlinedInput-notchedOutline': {
+          borderColor: 'white', // Border color to match placeholder color if needed
+        },
+        '& .MuiInputBase-input::placeholder': {
+          color: 'white', // Placeholder text color
+        },
+      }}
+      placeholder="Search..."
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <SearchIcon sx={{ color: 'white', fontSize: '1.6rem' }} />
+          </InputAdornment>
+        ),
+      }}
+    />
+ 
          <Button
          onClick={handleCartOpen}
-          sx={{ fontWeight:500,
+          sx={{ fontWeight:400,
                 color: "black",
-           border:'1px solid darkgray',
-           borderRadius:'50px',
-           padding:'0.5rem 1rem',
+           border:'1px solid white',
+           borderRadius:'10px',
+           padding:'0.4rem 1rem',
            textTransform:'none'
          }}>
           {/* <Badge badgeContent={cartitem.length} color="primary"> */}
-         <IoCartOutline style={{ fontSize: "1.5rem" }} /> Cart
+         <IoCartOutline style={{ fontSize: "1.5rem", color:'white' }} /> 
+         <span style={{color:'white', marginLeft:'0.3rem',
+          fontSize:'1rem'
+         }}>
+         Cart
+         </span>
          {/* </Badge> */}
          </Button>
 
+         <Btn sx={{display:'flex', alignItems:'center', justifyContent:'center', p:'0.6rem 1rem',
+          borderRadius:'10px'
+         }}>
+         <FaRegCircleUser style={{marginRight:'0.5rem', fontSize:'1.2rem', color:'white'}} />
+          <Typography sx={{color:'white', textTransform:'none', fontSize:'1rem'}}>
+            Sign Up
+          </Typography>
+         </Btn>
 
-          <Button
+          {/* <Button
             onClick={handleLogin}
             sx={{
               color: "white",
@@ -256,7 +294,7 @@ const handleCartOpen = ()=>{
           >
             <FaRegCircleUser style={{marginRight:'0.5rem', fontSize:'1.2rem'}} />
             Sign Up
-          </Button>
+          </Button> */}
 
           {/* <Box
             sx={{
@@ -351,17 +389,17 @@ const handleCartOpen = ()=>{
 
         </FlexBox>
 
-        <Box sx={{ display: { sm: "flex", md: "none" } }}>
+        <Box sx={{ display: { sm: "flex", md: "none", bgcolor:'black' } }}>
           <IconButton onClick={handleDrawerOpen}>
-            <MenuIcon />
+            <MenuIcon sx={{color:'white'}} />
           </IconButton>
-          <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerClose}>
-            <Box sx={{ width: 250, padding: "20px" }}>
+          <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerClose} >
+            <Box sx={{ width: '100%', height:'100vh', padding: "20px" , bgcolor:'black'}}>
               <IconButton
                 onClick={handleDrawerClose}
                 sx={{ position: "absolute", top: "10px", right: "10px" }}
               >
-                <CloseIcon />
+                <CloseIcon sx={{color:'white'}} />
               </IconButton>
               <br />
               <br />
@@ -378,6 +416,7 @@ const handleCartOpen = ()=>{
                       marginBottom: 2,
                       marginTop: 1,
                       cursor: "pointer",
+                      color:'white'
                     }}
                   >
                     {item.label}
