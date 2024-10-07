@@ -46,6 +46,20 @@ const HomeProductsMain = () => {
       title: "Understanding the Different Types of CBD Products: Oils, Edibles",
       des: "With the growing popularity of CBD, the market is flooded with products, making it essential to know how to identify high-quality options. Here are key factors to consider:",
     },
+    {
+      image: "/blogimage3.png",
+      name: "Shyamal Patel",
+      date: "May 19",
+      title: "Understanding the Different Types of CBD Products: Oils, Edibles",
+      des: "With the growing popularity of CBD, the market is flooded with products, making it essential to know how to identify high-quality options. Here are key factors to consider:",
+    },
+    {
+      image: "/blogimage3.png",
+      name: "Shyamal Patel",
+      date: "May 19",
+      title: "Understanding the Different Types of CBD Products: Oils, Edibles",
+      des: "With the growing popularity of CBD, the market is flooded with products, making it essential to know how to identify high-quality options. Here are key factors to consider:",
+    },
   ];
 
   const theme = useTheme();
@@ -97,7 +111,7 @@ const HomeProductsMain = () => {
       justifyContent="center"
       alignItems="center"
       style={{
-        overflowX: "hidden",
+        overflow: "hidden",
         position: "relative",
         padding: "10rem 13%",
         backgroundColor: "black",
@@ -171,7 +185,7 @@ const HomeProductsMain = () => {
                 }}
               >
                 <Image
-                  src="/product.png"
+                  src="product.png"
                   style={{ width: "100%", height: "15rem" }}
                 />
 

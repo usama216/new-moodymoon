@@ -82,7 +82,20 @@ const BenefitsofHempProducts = () => {
   const isMediumScreen = useMediaQuery( theme.breakpoints.up("sm") && theme.breakpoints.down("md"));
   const is1200 = useMediaQuery("(max-width:1200px)");
   return (
-    <Box sx={{ padding: "2rem 13%", backgroundColor: "black" }}>
+    <Box sx={{ padding: "2rem 13%", backgroundColor: "black", position:'relative' }}>
+
+      
+<img src="/benefitsmoke.png" alt=""  style={{position:'absolute', 
+        top:isSmallScreen ? '6rem': isMediumScreen ? '3rem': is1200 ? '-18rem':'-22rem',
+         width:isSmallScreen ?'70%' : '35%',
+        right:0
+      }}/>
+       <img src="/benefitleft.png" alt=""  style={{position:'absolute', 
+        bottom:0, left:0, width:isSmallScreen ? '20%' : '14%'
+      }}/>
+      <img src="/benefitright.png" alt=""  style={{position:'absolute', 
+        top:isSmallScreen ? '35%': is1200 ? '15%' :  '20%', right:0, width: isSmallScreen ? '20%':'14%'
+      }}/>
       {/* Title */}
 
       <Grid container spacing={4}>
@@ -160,12 +173,24 @@ const BenefitsofHempProducts = () => {
 
         {/* Right Side: Image Section */}
         <Grid item lg={6} md={6} sm={12} xs={12}>
+          <Box sx={{
+            position:'relative'
+          }}>
+            <Box sx={{height:'100%', width:'100%', position:'absolute', backgroundColor:'#0000004b',
+                boxShadow: 'inset 0px -60px 50px black', 
+            }}> 
+
+            </Box>
           <Box
             component="img"
             src={selectedImage} // The image that changes when an item is clicked
             alt="Selected Hemp Product Benefit"
-            sx={{ width: "100%", borderRadius: "8px" }}
+            sx={{ width: "100%", borderRadius: "8px",
+              // boxShadow: 'inset 10px 10px 10px rgba(255, 0, 0, 0.5)', 
+             
+             }}
           />
+          </Box>
         </Grid>
       </Grid>
     </Box>
