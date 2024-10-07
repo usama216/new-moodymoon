@@ -16,6 +16,9 @@ import ValidationForm from "./ValidationForm/ValidationForm";
 import HeroCard from "./HeroCard/HeroCard";
 import ClientTestimonials from "./ClientTestimonials/ClientTestimonials";
 import HomeBlogsMain from "./HomeBlogs/HomeBlogsMain";
+import FounderMessage from "./FounderMessage/FounderMessage";
+import BenefitsofHempProducts from "./BenefitsofHempProducts/BenefitsofHempProducts";
+import HomeProductsMain from "./HomeProducts.jsx/HomeProductsMain";
 
 const Landing = () => {
   const theme = useTheme();
@@ -36,7 +39,9 @@ const Landing = () => {
       <Hero/>
       <HeroCard/>
 
-
+      <HomeProductsMain/>
+<BenefitsofHempProducts/>
+<FounderMessage/>
         <HomeBlogsMain/>
       <ClientTestimonials/>
       </Page>
