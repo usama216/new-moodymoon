@@ -32,7 +32,11 @@ useEffect(() => {
         title:'THCA Flowers (17)' ,
    }, {img:'/shopcard1.png',
     title:'THCA Flowers (17)' ,
-}, {img:'/shopcard1.png',
+},
+ {img:'/shopcard1.png',
+    title:'THCA Flowers (17)' ,
+},
+{img:'/shopcard1.png',
     title:'THCA Flowers (17)' ,
 },
    
@@ -48,7 +52,7 @@ useEffect(() => {
     }}>
         <Grid container spacing={2} sx={{mt:'-5rem'}} >
             {cardlist.map((val , index)=>(
-                 <Grid key={index} item lg={3} md={4} sm={6} xs={12}>
+                 <Grid key={index} item lg={2.4} md={4} sm={6} xs={12}>
                  <Box
                  data-aos="fade-up">
                     <Box sx={{mb:'0.5rem', position:'relative', overflow:'hidden'}}>

@@ -17,6 +17,7 @@ import HeroCard from "./HeroCard/HeroCard";
 import ClientTestimonials from "./ClientTestimonials/ClientTestimonials";
 import HomeBlogsMain from "./HomeBlogs/HomeBlogsMain";
 import ShopCard from "./ShopCard/ShopCard";
+import Video from "./Video/Video";
 
 const Landing = () => {
   const theme = useTheme();
@@ -37,6 +38,7 @@ const Landing = () => {
       <Hero/>
       <HeroCard/>
       <ShopCard/>
+      <Video/>
 
 
         <HomeBlogsMain/>
