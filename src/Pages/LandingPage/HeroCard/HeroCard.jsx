@@ -15,7 +15,7 @@ const HeroCard = () => {
 
 useEffect(() => {
   AOS.init({
-    offset: 160,
+    offset: 300,
     duration: 1000 });
 }, []);
 
@@ -51,7 +51,7 @@ useEffect(() => {
   ]
   return (
     <>
-    <Box sx={{backgroundColor:'black', p:'1rem 13% 5rem 13%', 
+    <Box sx={{backgroundColor:'black', p:'1rem 13% 15rem 13%', 
         boxShadow: '-5px -20px 100px black, inset 0px 0px 60px black'
 
         // boxShadow: ''

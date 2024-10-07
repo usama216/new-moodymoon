@@ -16,6 +16,7 @@ import ValidationForm from "./ValidationForm/ValidationForm";
 import HeroCard from "./HeroCard/HeroCard";
 import ClientTestimonials from "./ClientTestimonials/ClientTestimonials";
 import HomeBlogsMain from "./HomeBlogs/HomeBlogsMain";
+import ShopCard from "./ShopCard/ShopCard";
 
 const Landing = () => {
   const theme = useTheme();
@@ -35,6 +36,7 @@ const Landing = () => {
       <Page title="Moody Mood Hemp">
       <Hero/>
       <HeroCard/>
+      <ShopCard/>
 
 
         <HomeBlogsMain/>
