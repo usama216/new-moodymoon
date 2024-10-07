@@ -20,8 +20,9 @@ import CustomButton from "../../../components/Btn/CustomButton";
 import PersonIcon from "@mui/icons-material/Person";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import { IoCartOutline } from "react-icons/io5";
 
-const HomeBlogsMain = () => {
+const HomeProductsMain = () => {
   const blogsdata = [
     {
       image: "/blogimage1.png",
@@ -57,7 +58,7 @@ const HomeBlogsMain = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: isSmallScreen ? 1 : isMediumScreen ? 2 : 3,
+    slidesToShow: isSmallScreen ? 1 : isMediumScreen ? 2 : 4,
     slidesToScroll: 1,
     arrows: false,
     responsive: [
@@ -116,7 +117,7 @@ const HomeBlogsMain = () => {
             component="h2"
             sx={{ color: "white", fontWeight: 600 }}
           >
-            Latest News & Blogs
+            Featured Products
           </Typography>
           <Box sx={{ display: "flex" }} gap={2}>
             <IconButton
@@ -149,115 +150,73 @@ const HomeBlogsMain = () => {
       <Box>
         <Slider {...settings} ref={sliderRef}>
           {blogsdata.map((row, index) => (
-            <Box key={index} sx={{ padding: "0 10px" }}>
-              <Card
-                style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  borderRadius: "10px",
-                  width: "100%",
-                  //   borderColor: "white",
-                  //   border: "1px solid #343434",
-                  padding: "0rem",
+            <Box key={index} sx={{ padding: "0 20px" }}>
+              <Box
+                sx={{
+                  backgroundColor: "#212121",
+                  padding: "0rem 2rem",
+                  borderRadius: "20px",
+                  paddingBottom: "1rem",
                 }}
               >
-                <Box>
-                  <Image src={row.image} width="100%" />
+                <Image
+                  src="/product.png"
+                  style={{ width: "100%", height: "15rem" }}
+                />
 
-                  <Box>
-                    <br />
+                <Typography
+                  sx={{
+                    marginTop: "1.3rem",
 
-                    <Typography
-                      sx={{
-                        color: "white",
-                        fontSize: isSmallScreen
-                          ? "1.2rem"
-                          : isMediumScreen
-                          ? "1.4rem"
-                          : "1.6rem",
-                        fontWeight: 600,
-                        textTransform: "capitalize",
-                        marginBottom: "0.5rem",
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        overflow: "hidden",
-                        WebkitLineClamp: 2, // Limit to 2 lines
-                        textOverflow: "ellipsis",
-                      }}
-                    >
-                      {row.title}
-                    </Typography>
+                    fontSize: "1.1rem",
+                    fontWeight: "600",
+                    color: "white",
+                    textAlign: "center",
+                  }}
+                >
+                  Super Boof - THC A Exotic Indoor PreRoll
+                </Typography>
 
-                    <Box sx={{ display: "flex" }} gap={3}>
-                      <Box sx={{ display: "flex" }} gap={1}>
-                        <PersonIcon sx={{ color: "#b2b2b2" }} />
-                        <Typography
-                          sx={{
-                            color: "#b2b2b2",
-                            fontSize: isSmallScreen
-                              ? "1rem"
-                              : isMediumScreen
-                              ? "1.1rem"
-                              : "1.1rem",
+                <Typography
+                  sx={{
+                    marginTop: "0.5rem",
+                    fontSize: "1.2rem",
+                    fontWeight: "600",
+                    color: "#469547",
+                    textAlign: "center",
+                  }}
+                >
+                  $13.99
+                </Typography>
 
-                            textTransform: "capitalize",
-                            marginBottom: "0.5rem",
-                          }}
-                        >
-                          {row.name}
-                        </Typography>
-                      </Box>
-                      <Box sx={{ display: "flex" }} gap={1}>
-                        <CalendarMonthIcon sx={{ color: "#b2b2b2" }} />
-                        <Typography
-                          sx={{
-                            color: "#b2b2b2",
-                            fontSize: isSmallScreen
-                              ? "1rem"
-                              : isMediumScreen
-                              ? "1.1rem"
-                              : "1.1rem",
-
-                            textTransform: "capitalize",
-                            marginBottom: "0.5rem",
-                          }}
-                        >
-                          {row.date}
-                        </Typography>
-                      </Box>
-                    </Box>
-                    <Typography
-                      sx={{
-                        color: "white",
-                        fontSize: isSmallScreen
-                          ? "0.9rem"
-                          : isMediumScreen
-                          ? "1rem"
-                          : "1rem",
-                        fontWeight: 400,
-                        textTransform: "capitalize",
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        overflow: "hidden",
-                        WebkitLineClamp: 3,
-                        textOverflow: "ellipsis",
-                      }}
-                    >
-                      {row.des}
-                    </Typography>
-                  </Box>
-
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: "0.5rem",
+                  }}
+                >
                   <Button
+                    variant="contained"
                     sx={{
+                      alignItems: "center",
+                      textAlign: "center",
+                      color: "white",
+                      fontWeight: 600,
                       textTransform: "none",
-                      marginTop: "0.5rem",
-                      marginLeft: "-0.5rem",
+                      borderRadius: "10px",
+                      display: "flex",
+                      alignItems: "center",
                     }}
                   >
-                    Read More <ArrowOutwardIcon />
+                    <IoCartOutline
+                      style={{ fontSize: "1.5rem", marginRight: "0.5rem" }}
+                    />{" "}
+                    Add to Cart
                   </Button>
                 </Box>
-              </Card>
+              </Box>
             </Box>
           ))}
         </Slider>
@@ -279,4 +238,4 @@ const HomeBlogsMain = () => {
   );
 };
 
-export default HomeBlogsMain;
+export default HomeProductsMain;

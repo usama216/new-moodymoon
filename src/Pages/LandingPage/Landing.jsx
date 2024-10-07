@@ -18,6 +18,9 @@ import ClientTestimonials from "./ClientTestimonials/ClientTestimonials";
 import HomeBlogsMain from "./HomeBlogs/HomeBlogsMain";
 import ShopCard from "./ShopCard/ShopCard";
 import Video from "./Video/Video";
+import FounderMessage from "./FounderMessage/FounderMessage";
+import BenefitsofHempProducts from "./BenefitsofHempProducts/BenefitsofHempProducts";
+import HomeProductsMain from "./HomeProducts.jsx/HomeProductsMain";
 
 const Landing = () => {
   const theme = useTheme();
@@ -40,7 +43,9 @@ const Landing = () => {
       <ShopCard/>
       <Video/>
 
-
+      <HomeProductsMain/>
+<BenefitsofHempProducts/>
+<FounderMessage/>
         <HomeBlogsMain/>
       <ClientTestimonials/>
       </Page>
