@@ -50,9 +50,8 @@ const HomeProductsMain = () => {
 
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMediumScreen = useMediaQuery(
-    theme.breakpoints.up("sm") && theme.breakpoints.down("md")
-  );
+  const isMediumScreen = useMediaQuery( theme.breakpoints.up("sm") && theme.breakpoints.down("md"));
+  const is1200 = useMediaQuery("(max-width:1200px)");
 
   const settings = {
     dots: false,
@@ -100,10 +99,22 @@ const HomeProductsMain = () => {
       style={{
         overflowX: "hidden",
         position: "relative",
-        padding: "2rem 13%",
+        padding: "10rem 13%",
         backgroundColor: "black",
       }}
     >
+
+      <img src="/homePSmoke.png" alt=""  style={{position:'absolute', 
+        top:isSmallScreen ? '6rem': isMediumScreen ? '3rem': is1200 ? '-2rem':'-8rem', width:'85%'
+      }}/>
+       <img src="/homePRight2.png" alt=""  style={{position:'absolute', 
+        top:0, right:0, width:'14%'
+      }}/>
+      <img src="/homePLeft.png" alt=""  style={{position:'absolute', 
+        top:0, left:0, width:'14%'
+      }}/>
+      
+
       <Box sx={{ textAlign: "center", marginBottom: "20px" }}>
         <Box
           sx={{

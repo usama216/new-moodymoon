@@ -1,78 +1,99 @@
-import React, { useState } from 'react';
-import { Box, useTheme } from '@mui/material';
+import React, { useState, useRef } from 'react';
+import { Box } from '@mui/material';
 import { FaPlay } from "react-icons/fa";
 
-
 const VideoPlayer = () => {
-    const theme = useTheme();
   const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef(null); // Reference to the iframe
 
-  const togglePlay = () => {
-    setIsPlaying(!isPlaying);
-    const video = document.getElementById('video');
-    if (isPlaying) {
-      video.pause();
-    } else {
-      video.play();
+  const togglePlay = (e) => {
+    e.stopPropagation(); // Prevent the click event from propagating to the Box container
+    setIsPlaying(true); // Set video to play
+
+    // Autoplay the video
+    if (videoRef.current) {
+      const videoSrc = videoRef.current.src;
+      videoRef.current.src = `https://www.youtube.com/embed/xNRJwmlRBNU`; // Autoplay the video on play
+    }
+  };
+
+  const handleScreenClick = () => {
+    setIsPlaying(false); // Hide the video
+    if (videoRef.current) {
+      const videoSrc = videoRef.current.src.replace("&autoplay=1", ""); // Stop autoplay
+      videoRef.current.src = "https://www.youtube.com/embed/xNRJwmlRBNU"; // Reset the video
     }
   };
 
   // Inline CSS styles
   const styles = {
     videoContainer: {
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center',
       position: 'relative',
       width: '100%',
-      height: 'auto',
-      paddingTop:'2rem', 
-      backgroundColor:'black', 
-      boxShadow:'inset 10px 10px 100px red '
+      height: '100vh',
+      paddingTop: '2rem', 
+      background: `url('/videobg.png') center center/cover no-repeat fixed`, // Background image with fixed position
+      backgroundColor: 'black',
+      cursor: isPlaying ? 'pointer' : 'default', // Change cursor when video is playing
     },
-    video: {
+    overlay: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
       width: '100%',
-      height: 'auto',
+      height: '100%',
+      backgroundColor: 'rgba(0, 0, 0, 0.349)', // Lighter overlay color
+      boxShadow: isPlaying ? 'inset 10px 90px 700px black, inset 0px 80px 1500px black' : 'inset 0px 80px 80px black',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 2,
     },
     playButton: {
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      backgroundColor: 'white', // Semi-transparent background
-      boxShadow:'2px 2px 10px red',
-      border: '2px solid red',
-      padding: '20px 20px',
-      fontSize: '18px',
+      backgroundColor: 'white',
+      border: '14px solid #706e6eb2',
+      padding: '30px 30px',
+      fontSize: '30px',
       fontWeight: 'bold',
       color: '#000',
       cursor: 'pointer',
       borderRadius: '50%',
-      zIndex: 10,
-      animation: 'vibrate 0.7s infinite',
-       // Vibration effect
+      zIndex: 3,
     },
-    vibrateKeyframes: `
-    @keyframes vibrate {
-      0% { border: 2px solid #ffffff57; box-shadow: 0px 0px  10px #ffffff57; }
-      25% { border: 3px solid #ffffff8f; box-shadow: 0px 0px 12px #ffffff57; }
-      50% { border: 4px solid #ffffffac; box-shadow: 0px 0px  14px #ffffff57; }
-      75% { border: 5px solid #ffffffc0; box-shadow: 0px 0px  16px #ffffff57; }
-      100% { border: 6px solid #ffffffd6; box-shadow: 0px 0px  18px #ffffff57; }
-    }
-  `,  
+    iframe: {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: '50%',
+      height: '50%',
+      display: isPlaying ? 'block' : 'none', // Show only when playing
+      zIndex: 5,
+    },
   };
 
   return (
-    <Box style={styles.videoContainer}>
-      <style>{styles.vibrateKeyframes}</style>
-      <video id="video" style={styles.video} controls muted>
-        <source src="/vd.mp4" type="video/mp4" />
-        YOUR Browser does not support this video format
-      </video>
-
+    <Box style={styles.videoContainer} onClick={handleScreenClick}>
+      {/* Overlay with play button */}
       {!isPlaying && (
-        <button style={styles.playButton} onClick={togglePlay}>
-          <FaPlay style={{color:'green'}}/>
-        </button>
+        <Box style={styles.overlay}>
+          <button style={styles.playButton} onClick={togglePlay}>
+            <FaPlay style={{ color: 'green' }} />
+          </button>
+        </Box>
       )}
+
+      {/* YouTube video iframe */}
+      <iframe
+        ref={videoRef}
+        src="https://www.youtube.com/embed/xNRJwmlRBNU"
+        allowFullScreen
+        title="moody moon video"
+        style={styles.iframe}
+      />
     </Box>
   );
 };
