@@ -100,7 +100,6 @@ const HomeBlogsMain = () => {
         overflowX: "hidden",
         position: "relative",
         padding: "2rem 13%",
-        backgroundColor: "black",
       }}
     >
       <Box sx={{ textAlign: "center", marginBottom: "20px" }}>

@@ -90,124 +90,132 @@ const ClientTestimonials = () => {
 
   return (
     <Box
-      justifyContent="center"
-      alignItems="center"
       style={{
-        overflowX: "hidden",
-        position: "relative",
-        padding: "2rem 15%",
-        backgroundColor: "black",
+        backgroundImage: "url(/feedback/feedbackbg.png)",
+backgroundPosition:'center',
+backgroundRepeat:'no-repeat',
+backgroundSize:'contain'
       }}
     >
-      <Box sx={{ textAlign: "center", marginBottom: "20px" }}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography
-            variant="h4"
-            component="h2"
-            sx={{ color: "white", fontWeight: 600 }}
+ <Box
+        justifyContent="center"
+        alignItems="center"
+        style={{
+          overflowX: "hidden",
+          position: "relative",
+          padding: "2rem 15%",
+        }}
+      >
+        <Box sx={{ textAlign: "center", marginBottom: "20px" }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
           >
-            What Our Clients Say
-          </Typography>
-          <Box sx={{ display: "flex" }} gap={2}>
-            <IconButton
-              onClick={handlePrev}
-              style={{
-                transform: "translateY(-50%)",
-                zIndex: 1,
-                backgroundColor: "#1f1f1f",
-                color: "#fff",
-              }}
+            <Typography
+              variant="h4"
+              component="h2"
+              sx={{ color: "white", fontWeight: 600 }}
             >
-              <ArrowBackIosIcon />
-            </IconButton>
-
-            <IconButton
-              onClick={handleNext}
-              style={{
-                transform: "translateY(-50%)",
-                zIndex: 1,
-                backgroundColor: "#1f1f1f",
-                color: "#fff",
-              }}
-            >
-              <ArrowForwardIosIcon />
-            </IconButton>
-          </Box>
-        </Box>
-      </Box>
-
-      <Box>
-        <Slider {...settings} ref={sliderRef}>
-          {reviews.map((review, index) => (
-            <Box key={index} sx={{ padding: "0 10px" }}>
-              <Card
+              What Our Clients Say
+            </Typography>
+            <Box sx={{ display: "flex" }} gap={2}>
+              <IconButton
+                onClick={handlePrev}
                 style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  borderRadius: "10px",
-                  width: "100%",
-                  borderColor: "white",
-                  border: "1px solid #343434",
-                  padding: "1rem",
+                  transform: "translateY(-50%)",
+                  zIndex: 1,
+                  backgroundColor: "#1f1f1f",
+                  color: "#fff",
                 }}
               >
-                <Box>
-                  <Box
-                    sx={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    <Box sx={{ display: "flex", alignItems: "center" }} gap={2}>
-                      <Avatar
-                        alt={review.name}
-                        src={review.image}
-                        style={{ width: "80px", height: "80px" }}
-                      />
+                <ArrowBackIosIcon />
+              </IconButton>
+
+              <IconButton
+                onClick={handleNext}
+                style={{
+                  transform: "translateY(-50%)",
+                  zIndex: 1,
+                  backgroundColor: "#1f1f1f",
+                  color: "#fff",
+                }}
+              >
+                <ArrowForwardIosIcon />
+              </IconButton>
+            </Box>
+          </Box>
+        </Box>
+
+        <Box>
+          <Slider {...settings} ref={sliderRef}>
+            {reviews.map((review, index) => (
+              <Box key={index} sx={{ padding: "0 10px" }}>
+                <Card
+                  style={{
+                    backgroundColor: "black",
+                    color: "white",
+                    borderRadius: "10px",
+                    width: "100%",
+                    borderColor: "white",
+                    border: "1px solid #343434",
+                    padding: "1rem",
+                  }}
+                >
+                  <Box>
+                    <Box
+                      sx={{ display: "flex", justifyContent: "space-between" }}
+                    >
+                      <Box
+                        sx={{ display: "flex", alignItems: "center" }}
+                        gap={2}
+                      >
+                        <Avatar
+                          alt={review.name}
+                          src={review.image}
+                          style={{ width: "80px", height: "80px" }}
+                        />
+                        <Box>
+                          <Typography variant="h6">{review.name}</Typography>
+                          <Typography variant="body2">
+                            {"⭐".repeat(review.stars)}
+                          </Typography>
+                        </Box>
+                      </Box>
                       <Box>
-                        <Typography variant="h6">{review.name}</Typography>
-                        <Typography variant="body2">
-                          {"⭐".repeat(review.stars)}
-                        </Typography>
+                        <Image src="/testimonialsYellow.png" width="80%" />
                       </Box>
                     </Box>
+                    <br />
+                    <Divider sx={{ backgroundColor: "#343434" }} />
+                    <br />
                     <Box>
-                      <Image src="/testimonialsYellow.png" width="80%" />
+                      <Typography variant="body1" sx={{ fontSize: "1.5rem" }}>
+                        {review.review}
+                      </Typography>
                     </Box>
                   </Box>
-                  <br />
-                  <Divider sx={{ backgroundColor: "#343434" }} />
-                  <br />
-                  <Box>
-                    <Typography variant="body1" sx={{ fontSize: "1.5rem" }}>
-                      {review.review}
-                    </Typography>
-                  </Box>
-                </Box>
-              </Card>
-            </Box>
-          ))}
-        </Slider>
-      </Box>
-      <br/>
-<Box sx={{display:'flex', justifyContent:'center',}}>
-
-<CustomButton
+                </Card>
+              </Box>
+            ))}
+          </Slider>
+        </Box>
+        <br />
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <CustomButton
             name="View All"
-            br='15px'
+            br="15px"
             border={"1px solid #51a2dc"}
             backgroundColor={"#51a2dc"}
             color={"white"}
             hbackgroundColor={"transparent"}
             hcolor={"#51a2dc"}
             width={"14rem"}
-
           />
-</Box>
-
+        </Box>
+      </Box>
     </Box>
   );
 };
