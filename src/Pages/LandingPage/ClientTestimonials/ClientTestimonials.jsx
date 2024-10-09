@@ -108,7 +108,7 @@ const ClientTestimonials = () => {
         style={{
           overflowX: "hidden",
           position: "relative",
-          padding: "5rem 15%",
+          padding: "5rem 13%",
         }}
       >
         <Box sx={{ textAlign: "center", marginBottom: "20px" }}>
@@ -157,7 +157,7 @@ const ClientTestimonials = () => {
         <Box>
           <Slider {...settings} ref={sliderRef}>
             {reviews.map((review, index) => (
-              <Box key={index} sx={{ padding: "0 10px" }}>
+              <Box key={index} sx={{ padding: isSmallScreen ?  '0px': "0 10px" }}>
                 <Card
                   style={{
                     backgroundColor: "black",

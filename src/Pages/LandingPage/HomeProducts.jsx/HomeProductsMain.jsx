@@ -28,10 +28,10 @@ import AOS from "aos";
 const HomeProductsMain = () => {
 
   AOS.init({
-    offset: 0,
+    offset: 80,
     duration: 500,
     easing: 'ease-in-sine',
-    delay: 0,
+    delay: 20,
   });
 
   const blogsdata = [
