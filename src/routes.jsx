@@ -18,7 +18,9 @@ import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
 import BhajjanCoursesMain from "./Pages/OtherCourses/BhajjanCourse/BhajjanCoursesMain";
 import TablaCoursesMain from "./Pages/OtherCourses/Tablaourse/TablaCoursesMain";
 import EmailOTPConfirmation from "./Pages/Authentication_Page/Components/EmailOTPConfirmation";
-
+import OurProductMain from "./Pages/OurProducts/OurProductMain";
+import ProductDetailMain from "./Pages/ProductDetail/ProductDetailMain";
+import LabtestMain from './Pages/LabTest/LabtestMain'
 
 export default function Router() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -34,6 +36,22 @@ export default function Router() {
       path: "/",
       element: <Landing />,
     },
+    {
+      path: "/our-products",
+      element: <OurProductMain />,
+    },
+
+    {
+      path: "/product/:id",
+      element: <ProductDetailMain />,
+    },
+
+    {
+      path: "/lab-tests",
+      element: <LabtestMain />,
+    },
+
+
     {
       path: "/sign-up",
       element: <SignUp />,

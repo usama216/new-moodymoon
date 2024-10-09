@@ -39,7 +39,7 @@ const Header = () => {
   const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const is1200 = useMediaQuery('(max-width:1200px)'); 
+  const is1200 = useMediaQuery('(max-width:1200px)');
 
   const [drawerOpen, setDrawerOpen] = useState(false);
   const navigate = useNavigate();
@@ -95,7 +95,8 @@ const Header = () => {
     { label: "Labe Test", route: "/lab-tests" },
     { label: "FAQS", route: "/faqs" },
     { label: "Blogs", route: "/blogs" },
-    { label: "Contact Us", route: "/contactus" },
+    { label: "Contact Us", route: "/our-products" },
+
   ];
 const handleHome = ()=>{
   navigate('/')
@@ -115,7 +116,7 @@ const handleCartOpen = ()=>{
      overflow:'hidden',
      zIndex:'99',
       position:'sticky'
-     
+
   }}>
     {/* white page for shipping cart  */}
     {/* <Box
@@ -174,7 +175,7 @@ const handleCartOpen = ()=>{
           ":hover": {
             color: theme.palette.primary.main,
           },
-        }}> 
+        }}>
           Home
         </Typography>
         <Box sx={{display:'flex'  }}>
@@ -203,7 +204,7 @@ const handleCartOpen = ()=>{
         </Box>
 
         <FlexBox sx={{ display: { xs: 'none',sm: "none", md: "flex", gap: "0.5rem" } }}>
-       
+
     <TextField
       onClick={()=> setIsClicked(true)}
       onBlur={()=> setIsClicked(false)}
@@ -225,7 +226,7 @@ const handleCartOpen = ()=>{
           fontWeight: 400, // Font weight for the input text
           color:'white',
           fontSize:'0.9rem'
-          
+
         },
         '& .MuiInputLabel-root': {
           color: 'white', // Placeholder color
@@ -246,7 +247,7 @@ const handleCartOpen = ()=>{
         ),
       }}
     />
- 
+
          <Button
          onClick={handleCartOpen}
           sx={{ fontWeight:400,
@@ -257,7 +258,7 @@ const handleCartOpen = ()=>{
            textTransform:'none'
          }}>
           {/* <Badge badgeContent={cartitem.length} color="primary"> */}
-         <IoCartOutline style={{ fontSize: "1.5rem", color:'white' }} /> 
+         <IoCartOutline style={{ fontSize: "1.5rem", color:'white' }} />
          <span style={{color:'white', marginLeft:'0.3rem',
           fontSize:'1rem'
          }}>
