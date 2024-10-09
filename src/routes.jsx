@@ -62,6 +62,7 @@ export default function Router() {
       path: "/blogs",
       element: <BlogPageMain />,
     },
+    {
       path: "/faqs",
       element: <FaqsMain />,
     },
