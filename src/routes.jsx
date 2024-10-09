@@ -21,6 +21,7 @@ import EmailOTPConfirmation from "./Pages/Authentication_Page/Components/EmailOT
 import OurProductMain from "./Pages/OurProducts/OurProductMain";
 import ProductDetailMain from "./Pages/ProductDetail/ProductDetailMain";
 import LabtestMain from './Pages/LabTest/LabtestMain'
+import FaqsMain from './Pages/FAQS/FaqsMain'
 
 export default function Router() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -49,6 +50,11 @@ export default function Router() {
     {
       path: "/lab-tests",
       element: <LabtestMain />,
+    },
+
+    {
+      path: "/faqs",
+      element: <FaqsMain />,
     },
 
 
