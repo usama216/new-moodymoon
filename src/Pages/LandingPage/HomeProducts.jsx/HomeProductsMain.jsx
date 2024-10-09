@@ -21,8 +21,19 @@ import PersonIcon from "@mui/icons-material/Person";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { IoCartOutline } from "react-icons/io5";
+import { Gradient } from "@mui/icons-material";
+import AOS from "aos";
+
 
 const HomeProductsMain = () => {
+
+  AOS.init({
+    offset: 0,
+    duration: 500,
+    easing: 'ease-in-sine',
+    delay: 0,
+  });
+
   const blogsdata = [
     {
       image: "/blogimage1.png",
@@ -107,6 +118,31 @@ const HomeProductsMain = () => {
   };
 
   return (
+  <>
+    <style>
+    {`
+      .image {
+        width: 12rem;
+        height: 20rem;
+        position: absolute;
+        top: -6rem;
+        transition: transform 0.5s ease-in-out; /* Smooth transition */
+      }
+
+      .image:hover {
+        animation: shake infinite 2s ease-in-out; /* Trigger shake animation on hover */
+      }
+
+      @keyframes shake {
+        0% { transform: translateY(0); }
+        25% { transform: translateY(-5px); }
+        50% { transform: translateY(5px); }
+        75% { transform: translateY(-5px); }
+        100% { transform: translateY(0); }
+      }
+    `}
+  </style>
+
     <Box
       justifyContent="center"
       alignItems="center"
@@ -144,6 +180,7 @@ const HomeProductsMain = () => {
           >
             Featured Products
           </Typography>
+
           <Box sx={{ display: "flex" }} gap={2}>
             <IconButton
               onClick={handlePrev}
@@ -170,26 +207,41 @@ const HomeProductsMain = () => {
             </IconButton>
           </Box>
         </Box>
+
       </Box>
 
       <Box>
         <Slider {...settings} ref={sliderRef}>
           {blogsdata.map((row, index) => (
             <Box key={index} sx={{ padding: "0 20px" }}>
-              <Box
+
+             <Box sx={{pt:'8rem'}}>
+             <Box
                 sx={{
-                  backgroundColor: "#212121",
-                  padding: "0rem 2rem",
+                  // backgroundImage:"linear-Gradient(to bottom, transparent 2% , #212121 28%, #212121 70%)",
+                  backgroundColor:'#212121',
+                  padding: "1rem 2rem",
                   borderRadius: "20px",
                   paddingBottom: "1rem",
-                }}
-              >
-                <Image
+                  position:'relative',
+                   display:'flex',
+                  flexDirection:'column',
+                  //  alignItems:'center',
+                  //  justifyContent:'center',
+
+
+                }}>
+               <Box sx={{position:'relative', height: "15rem", display:'flex', justifyContent:'center'}}>
+               <Image
+               data-aos="fade-up"
                   src="product.png"
-                  style={{ width: "100%", height: "15rem" }}
+                  // style={{ width: "12rem", height: "20rem", position:'absolute', top:'-5rem',}}
+                  className="image"   
                 />
+               </Box>
 
                 <Typography
+                data-aos="fade-up"
                   sx={{
                     marginTop: "1.3rem",
 
@@ -203,6 +255,7 @@ const HomeProductsMain = () => {
                 </Typography>
 
                 <Typography
+                data-aos="fade-up"
                   sx={{
                     marginTop: "0.5rem",
                     fontSize: "1.2rem",
@@ -215,6 +268,7 @@ const HomeProductsMain = () => {
                 </Typography>
 
                 <Box
+                data-aos="fade-up"
                   sx={{
                     display: "flex",
                     justifyContent: "center",
@@ -223,6 +277,7 @@ const HomeProductsMain = () => {
                   }}
                 >
                   <Button
+                  data-aos="fade-up"
                     variant="contained"
                     sx={{
                       alignItems: "center",
@@ -242,6 +297,8 @@ const HomeProductsMain = () => {
                   </Button>
                 </Box>
               </Box>
+
+             </Box>
             </Box>
           ))}
         </Slider>
@@ -260,6 +317,7 @@ const HomeProductsMain = () => {
         />
       </Box>
     </Box>
+  </>
   );
 };
 
