@@ -15,12 +15,14 @@ import {
   Button,
   styled,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoArrowForward, IoCartOutline } from "react-icons/io5";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useNavigate } from "react-router-dom";
 import Image from "../../components/Image/Image";
 import Page from "../../components/page";
+import  AOS  from "aos";
+import 'aos/dist/aos.css';
 
 const CustomTextField = styled(TextField)(({ theme }) => ({
   "& input": {
@@ -52,7 +54,18 @@ const CustomAccordion = styled(Accordion)(({ theme }) => ({
   "&:before": { display: "none" },
 }));
 
+
+
 const OurProductCards = () => {
+
+  AOS.init({
+    offset: 80,
+    duration: 500,
+    easing: 'ease-in-sine',
+    delay: 20,
+  });
+
+
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -63,6 +76,7 @@ const OurProductCards = () => {
   const [selectedAvailability, setSelectedAvailability] = useState("In Stock");
   const [priceRange, setPriceRange] = useState([0, 349.99]);
   const navigate = useNavigate();
+
   const listData = [
     {
       id: 1,
@@ -169,6 +183,31 @@ const OurProductCards = () => {
 
   return (
 <>
+<style>
+    {`
+      .image {
+        width: 12rem;
+        height: 20rem;
+        position: absolute;
+        top: -6rem;
+        transition: transform 0.5s ease-in-out; /* Smooth transition */
+      }
+
+      .image:hover {
+        animation: shake infinite 2s ease-in-out; /* Trigger shake animation on hover */
+      }
+
+      @keyframes shake {
+        0% { transform: translateY(0); }
+        25% { transform: translateY(-5px); }
+        50% { transform: translateY(5px); }
+        75% { transform: translateY(-5px); }
+        100% { transform: translateY(0); }
+      }
+    `}
+  </style>
+
+
     <Page title='Our Products '>
     <Box sx={{ padding: "5% 13%" }}>
       <Grid container spacing={6}>
@@ -421,75 +460,91 @@ const OurProductCards = () => {
                 <Grid key={index} item lg={4} md={6} sm={12} xs={12}>
                   <Box onClick={() => handleDetail(row.id)}>
                     <Box key={index} sx={{ padding: "0 0px" }}>
-                      <Box
-                        sx={{
-                          backgroundColor: "#212121",
-                          padding: "0rem 2rem",
-                          borderRadius: "20px",
-                          paddingBottom: "1rem",
-                        }}
-                      >
-                        <Image
-                          src="product.png"
-                          style={{ width: "100%", height: "15rem" }}
-                        />
+                    <Box sx={{pt:'8rem'}}>
+             <Box
+                sx={{
+                  // backgroundImage:"linear-Gradient(to bottom, transparent 2% , #212121 28%, #212121 70%)",
+                  backgroundColor:'#212121',
+                  padding: "1rem 2rem",
+                  borderRadius: "20px",
+                  paddingBottom: "1rem",
+                  position:'relative',
+                   display:'flex',
+                  flexDirection:'column',
+                  //  alignItems:'center',
+                  //  justifyContent:'center',
 
-                        <Typography
-                          sx={{
-                            marginTop: "1.3rem",
 
-                            fontSize: "1.1rem",
-                            fontWeight: "600",
-                            color: "white",
-                            textAlign: "center",
-                          }}
-                        >
-                          Super Boof - THC A Exotic Indoor PreRoll
-                        </Typography>
+                }}>
+               <Box sx={{position:'relative', height: "15rem", display:'flex', justifyContent:'center'}}>
+               <Image
+               data-aos="fade-up"
+                  src="product.png"
+                  // style={{ width: "12rem", height: "20rem", position:'absolute', top:'-5rem',}}
+                  className="image"
+                />
+               </Box>
 
-                        <Typography
-                          sx={{
-                            marginTop: "0.5rem",
-                            fontSize: "1.2rem",
-                            fontWeight: "600",
-                            color: "#469547",
-                            textAlign: "center",
-                          }}
-                        >
-                          $13.99
-                        </Typography>
+                <Typography
+                data-aos="fade-up"
+                  sx={{
+                    marginTop: "1.3rem",
 
-                        <Box
-                          sx={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            marginTop: "0.5rem",
-                          }}
-                        >
-                          <Button
-                            variant="contained"
-                            sx={{
-                              alignItems: "center",
-                              textAlign: "center",
-                              color: "white",
-                              fontWeight: 600,
-                              textTransform: "none",
-                              borderRadius: "10px",
-                              display: "flex",
-                              alignItems: "center",
-                            }}
-                          >
-                            <IoCartOutline
-                              style={{
-                                fontSize: "1.5rem",
-                                marginRight: "0.5rem",
-                              }}
-                            />{" "}
-                            Add to Cart
-                          </Button>
-                        </Box>
-                      </Box>
+                    fontSize: "1.1rem",
+                    fontWeight: "600",
+                    color: "white",
+                    textAlign: "center",
+                  }}
+                >
+                  Super Boof - THC A Exotic Indoor PreRoll
+                </Typography>
+
+                <Typography
+                data-aos="fade-up"
+                  sx={{
+                    marginTop: "0.5rem",
+                    fontSize: "1.2rem",
+                    fontWeight: "600",
+                    color: "#469547",
+                    textAlign: "center",
+                  }}
+                >
+                  $13.99
+                </Typography>
+
+                <Box
+                data-aos="fade-up"
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: "0.5rem",
+                  }}
+                >
+                  <Button
+                  data-aos="fade-up"
+                    variant="contained"
+                    sx={{
+                      alignItems: "center",
+                      textAlign: "center",
+                      color: "white",
+                      fontWeight: 600,
+                      textTransform: "none",
+                      borderRadius: "10px",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <IoCartOutline
+                      style={{ fontSize: "1.5rem", marginRight: "0.5rem" }}
+                    />{" "}
+                    Add to Cart
+                  </Button>
+                </Box>
+              </Box>
+
+             </Box>
+
                     </Box>
                   </Box>
                 </Grid>
