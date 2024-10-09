@@ -28,6 +28,7 @@ const ProductCard = () => {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [orderQuantiy, setOrderQuantity] = useState(1);
+  
 
   const addtocartdata = {
     cardinfo: [

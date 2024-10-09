@@ -28,6 +28,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useSelector } from "react-redux";
 import ENavLinks from "./ENavLinks";
 import { BorderAllRounded } from "@mui/icons-material";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 
 
@@ -119,10 +120,9 @@ const handleCartOpen = ()=>{
 
   }}>
     {/* white page for shipping cart  */}
-    {/* <Box
+    <Box
   sx={{
-    transition: 'opacity 1s ease-in-out, visibility 0s linear 0.5s',
-     // Smooth opacity transition
+    transition: 'opacity 1s ease-in-out, visibility 0s linear 0.5s', // Smooth opacity transition
     opacity: isCartOpen ? 1 : 0, // Fully visible when open, fully invisible when closed
     visibility: isCartOpen ? 'visible' : 'hidden', // Hides the element when not visible
     background: '#ffffff86',
@@ -134,7 +134,23 @@ const handleCartOpen = ()=>{
     left: 0,
     zIndex: '98',
   }}
-></Box> */}
+></Box>
+
+{/* =======SHOPING CART============= */}
+<Box sx={{
+      position:'fixed',
+      top:'0',
+      transition:'1s',
+      right:isCartOpen ? '0':'-100%',
+      // display:isCartOpen ?  "flex": 'none',
+      zIndex:'99',
+      overflow:'hidden',
+      height:'100%'
+    }}>
+      <ShoppingCart
+      closecart = {handleCartOpen}
+      />
+      </Box>
 
       <Box
         sx={{
