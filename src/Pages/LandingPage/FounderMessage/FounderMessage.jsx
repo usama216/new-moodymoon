@@ -8,7 +8,11 @@ const FounderMessage = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
-      <Box sx={{ padding: "3rem 13%", backgroundColor:'black', color:'white' }}>
+      <Box sx={{ padding: "3rem 13%", color:'white', position:'relative' }}>
+
+        <img src="/foundersmoke.png" alt="" style={{position:'absolute',
+          top:isMediumScreen ? '0rem':'-10rem', right:0, width:'65%', zIndex:99}} />
+
         <Grid container spacing={4} sx={{ alignItems: "center" }}>
           <Grid item lg={5} md={5} sm={12} xs={12} sx={{display:'flex'}}>
             {/* <Box sx={{

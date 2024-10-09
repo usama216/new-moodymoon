@@ -91,12 +91,16 @@ const ClientTestimonials = () => {
   return (
     <Box
       style={{
-        backgroundImage: "url(/feedback/feedbackbg.png)",
-backgroundPosition:'center',
-backgroundRepeat:'no-repeat',
-backgroundSize:'contain'
+        position:'relative'
+        // backgroundImage: "url(/feedback/feedbackbg.png)",
+// backgroundPosition:'center',
+// backgroundRepeat:'no-repeat',
+// backgroundSize:'contain'
       }}
     >
+       <img src="/clientsmoke.png" alt="" style={{position:'absolute',
+        top:isSmallScreen ? '0rem': isMediumScreen ?  '-8rem':'-20rem', left:0, width:'70%'}} />
+       <img src="/clientleaf.png" alt="" style={{position:'absolute',bottom:0, right:-10, width:'11%'}} />
  <Box
         justifyContent="center"
         alignItems="center"

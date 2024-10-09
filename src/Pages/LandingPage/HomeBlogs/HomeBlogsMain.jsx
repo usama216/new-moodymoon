@@ -99,9 +99,12 @@ const HomeBlogsMain = () => {
       style={{
         overflowX: "hidden",
         position: "relative",
-        padding: "2rem 13%",
+        padding: "5rem 13%",
       }}
     >
+        <img src="/founderright.png" alt="" style={{position:'absolute',top:'4rem', right:0, width:'20%'}} />
+        <img src="/founderleft.png" alt="" style={{position:'absolute',top:'-4rem', left:0, width:'18%'}} />
+
       <Box sx={{ textAlign: "center", marginBottom: "20px" }}>
         <Box
           sx={{

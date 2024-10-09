@@ -39,6 +39,8 @@ const Footer = () => {
   const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const is1200 = useMediaQuery('(max-width:1200px)'); 
+
   const currentPath = location.pathname;
 
   const isHidden =
@@ -106,17 +108,29 @@ const Footer = () => {
      <Box sx={{display:'flex'}}>
      <Box>
      <img src="/footerright.png" alt="" style={{
+      display:isSmallScreen ? 'none' : 'flex',
+       width:'45%',
         position:'absolute',
         right:0,
-        top:0,
+        bottom:0,
         bottom:0
       }}/>
+       <img src="/footerright.png" alt="" style={{
+        display:isSmallScreen ? 'flex' : 'none',
+        position:'absolute',
+        right:0,
+        bottom:0,
+        bottom:0
+      }}/>
+      
      </Box>
 
        <img src="/footerleft.png" alt="" style={{
+        display:isSmallScreen ? 'none' : 'flex',
+        width:is1200 ? '100%': '90%',
         position:'absolute',
-        left:0,
-        bottom:0
+        left: isSmallScreen ? '-10rem': isMediumScreen ?  '-20rem' :'-30rem',
+        bottom:isMediumScreen ? '-5rem': '-15rem'
       }}/>
      </Box>
       <Grid container spacing={5} sx={{paddingTop:isSmallScreen ?  "1rem": '3rem'}}>
@@ -249,7 +263,7 @@ const Footer = () => {
         <br />
         <br />
         <Box
-          sx={{ display: "flex", alignItems: "center", width: "70%" }}
+          sx={{ display: "flex", flexDirection:isSmallScreen ? 'column': 'row', alignItems: "center", width:is1200 ? '100%': "70%" }}
           gap={2}
         >
           <TextField
@@ -267,7 +281,7 @@ const Footer = () => {
             color={"white"}
             hbackgroundColor={"transparent"}
             hcolor={"#51a2dc"}
-            width={"14rem"}
+            width={isSmallScreen ? 'auto': isMediumScreen ? '16rem' : "14rem"}
         
           />
         </Box>
