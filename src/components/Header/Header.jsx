@@ -96,7 +96,7 @@ const Header = () => {
     { label: "Labe Test", route: "/lab-tests" },
     { label: "FAQS", route: "/faqs" },
     { label: "Blogs", route: "/blogs" },
-    { label: "Contact Us", route: "/our-products" },
+    { label: "Contact Us", route: "/contact-us" },
 
   ];
 const handleHome = ()=>{

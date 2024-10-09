@@ -22,6 +22,7 @@ import OurProductMain from "./Pages/OurProducts/OurProductMain";
 import ProductDetailMain from "./Pages/ProductDetail/ProductDetailMain";
 import LabtestMain from './Pages/LabTest/LabtestMain'
 import ContactUsMain from "./Pages/ContactUs/ContactUsMain";
+import BlogPageMain from "./Pages/BlogsPage/BlogPageMain";
 
 export default function Router() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -55,6 +56,10 @@ export default function Router() {
     {
       path: "/contact-us",
       element: <ContactUsMain />,
+    },
+    {
+      path: "/blogs",
+      element: <BlogPageMain />,
     },
 
     {
