@@ -126,7 +126,7 @@ const HomeBlogsMain = () => {
               style={{
                 transform: "translateY(-50%)",
                 zIndex: 1,
-                backgroundColor: "#1f1f1f",
+                // backgroundColor: "#1f1f1f",
                 color: "#fff",
               }}
             >
@@ -138,7 +138,7 @@ const HomeBlogsMain = () => {
               style={{
                 transform: "translateY(-50%)",
                 zIndex: 1,
-                backgroundColor: "#1f1f1f",
+                // backgroundColor: "#1f1f1f",
                 color: "#fff",
               }}
             >
@@ -154,7 +154,7 @@ const HomeBlogsMain = () => {
             <Box key={index} sx={{ padding: "0 10px" }}>
               <Card
                 style={{
-                  backgroundColor: "black",
+                  backgroundColor: "transparent",
                   color: "white",
                   borderRadius: "10px",
                   width: "100%",

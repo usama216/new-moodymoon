@@ -105,8 +105,8 @@ const Footer = () => {
 
   return (
     <StyledFooter>
-     <Box sx={{display:'flex'}}>
-     <Box>
+     <Box sx={{display:'flex', overflow:'hidden' }}>
+     <Box sx={{overflow:'hidden'}}>
      <img src="/footerright.png" alt="" style={{
       display:isSmallScreen ? 'none' : 'flex',
        width:'45%',
@@ -132,8 +132,8 @@ const Footer = () => {
         left: isSmallScreen ? '-10rem': isMediumScreen ?  '-20rem' :'-30rem',
         bottom:isMediumScreen ? '-5rem': '-15rem'
       }}/>
-     </Box>
-      <Grid container spacing={5} sx={{paddingTop:isSmallScreen ?  "1rem": '3rem'}}>
+     </Box >
+     <Grid container spacing={5} sx={{paddingTop:isSmallScreen ?  "1rem": '3rem'}}>
         <Grid item lg={3} sm={6} xs={12}>
           <FlexBox sx={{ gap: "1rem" }}>
             <Image src="/footerlogo.svg" width={isSmallScreen ? "40%": '50%'} />

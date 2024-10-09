@@ -90,16 +90,17 @@ const ClientTestimonials = () => {
 
   return (
     <Box
-      style={{
-        position:'relative'
-        // backgroundImage: "url(/feedback/feedbackbg.png)",
-// backgroundPosition:'center',
-// backgroundRepeat:'no-repeat',
-// backgroundSize:'contain'
+      sx={{
+        position:'relative',
+        overflow:'hidden',
+        // pt:'10rem'
       }}
     >
-       <img src="/clientsmoke.png" alt="" style={{position:'absolute',
-        top:isSmallScreen ? '0rem': isMediumScreen ?  '-8rem':'-20rem', left:0, width:'70%'}} />
+      <Box sx={{width:'100%', height:'20vh',position:'absolute', left:0, top:'-15rem'}}>
+      <img src="/clientsmoke.png" alt="" style={{
+        // top:isSmallScreen ? '0rem': isMediumScreen ?  '-8rem':'-20rem', left:0,
+         width:'70%',  }} />
+      </Box>
        <img src="/clientleaf.png" alt="" style={{position:'absolute',bottom:0, right:-10, width:'11%'}} />
  <Box
         justifyContent="center"
@@ -107,7 +108,7 @@ const ClientTestimonials = () => {
         style={{
           overflowX: "hidden",
           position: "relative",
-          padding: "2rem 15%",
+          padding: "5rem 15%",
         }}
       >
         <Box sx={{ textAlign: "center", marginBottom: "20px" }}>
